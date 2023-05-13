@@ -1,13 +1,13 @@
-import { HStack, Image, Text } from "@chakra-ui/react"
-import logo from "../assets/Logo.png"
+import { HStack, Image } from "@chakra-ui/react";
+import logo from "../assets/Logo.png";
+import ColorModeSwitch from "./ColorModeSwitch";
 function NavBar() {
   return (
-    
-    <HStack>
-        <Image src={logo} boxSize={16} borderRadius={15} m={2} />
-        <Text fontFamily={"sans-serif"}>Game Club</Text>
+    <HStack justifyContent={"space-between"} padding="10px">
+      <Image src={logo} boxSize={16} borderRadius={15} m={2} />
+      <ColorModeSwitch />
     </HStack>
-  )
+  );
 }
 
-export default NavBar
+export default NavBar;
