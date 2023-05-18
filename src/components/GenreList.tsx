@@ -5,9 +5,10 @@ import GenresSkeleton from "./GenresSkeleton";
 
 interface Props {
   onSelectGenre: (genre: Genre) => void;
+  selectedGenre: Genre | null;
 }
 
-function GenreList({ onSelectGenre }: Props) {
+function GenreList({ selectedGenre, onSelectGenre }: Props) {
   const { data, error, isLoading } = useGenre();
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 
@@ -28,6 +29,7 @@ function GenreList({ onSelectGenre }: Props) {
             />
             <Button
               fontSize="lg"
+              fontWeight={genre.id === selectedGenre?.id ? "bold" : "normal"}
               variant="link"
               onClick={() => onSelectGenre(genre)}
             >
