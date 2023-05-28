@@ -1,4 +1,4 @@
-import { HStack, List, ListItem, Image, Text, Button } from "@chakra-ui/react";
+import { HStack, List, ListItem, Image, Text, Button, Heading } from "@chakra-ui/react";
 import useGenre, { Genre } from "../hooks/useGenre";
 import getCroppedImageUrl from "../services/image-url";
 import GenresSkeleton from "./GenresSkeleton";
@@ -15,30 +15,36 @@ function GenreList({ selectedGenre, onSelectGenre }: Props) {
   if (error) return null;
 
   return (
-    <List>
-      {skeletons.map(
-        (skeleton) => isLoading && <GenresSkeleton key={skeleton} />
-      )}
-      {data.map((genre) => (
-        <ListItem key={genre.id} paddingY="8px">
-          <HStack>
-            <Image
-              boxSize="32px"
-              borderRadius={8}
-              src={getCroppedImageUrl(genre.image_background)}
-            />
-            <Button
-              fontSize="lg"
-              fontWeight={genre.id === selectedGenre?.id ? "bold" : "normal"}
-              variant="link"
-              onClick={() => onSelectGenre(genre)}
-            >
-              {genre.name}
-            </Button>
-          </HStack>
-        </ListItem>
-      ))}
-    </List>
+    <>
+    <Heading fontSize="2xl" marginBottom={3}>Genres</Heading>
+      <List>
+        {skeletons.map(
+          (skeleton) => isLoading && <GenresSkeleton key={skeleton} />
+        )}
+        {data.map((genre) => (
+          <ListItem key={genre.id} paddingY="8px">
+            <HStack>
+              <Image
+                objectFit="cover"
+                boxSize="32px"
+                borderRadius={8}
+                src={getCroppedImageUrl(genre.image_background)}
+              />
+              <Button
+                whiteSpace={"normal"}
+                textAlign="left"
+                fontSize="lg"
+                fontWeight={genre.id === selectedGenre?.id ? "bold" : "normal"}
+                variant="link"
+                onClick={() => onSelectGenre(genre)}
+              >
+                {genre.name}
+              </Button>
+            </HStack>
+          </ListItem>
+        ))}
+      </List>
+    </>
   );
 }
 
