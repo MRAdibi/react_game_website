@@ -1,5 +1,5 @@
 import { HStack, List, ListItem, Image, Button, Heading } from "@chakra-ui/react";
-import useGenre, { Genre } from "../hooks/useGenre";
+import useGenres, { Genre } from "../hooks/useGenres";
 import getCroppedImageUrl from "../services/image-url";
 import GenresSkeleton from "./GenresSkeleton";
 
@@ -9,7 +9,7 @@ interface Props {
 }
 
 function GenreList({ selectedGenreId, onSelectGenre }: Props) {
-  const { data, error, isLoading } = useGenre();
+  const { data, error, isLoading } = useGenres();
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 
   if (error) return null;
