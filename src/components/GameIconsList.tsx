@@ -1,17 +1,17 @@
+import { HStack, Icon } from "@chakra-ui/react";
+import { IconType } from "react-icons";
+import { BsGlobe } from "react-icons/bs";
 import {
-  FaWindows,
-  FaPlaystation,
-  FaXbox,
+  FaAndroid,
   FaApple,
   FaLinux,
-  FaAndroid,
+  FaPlaystation,
+  FaWindows,
+  FaXbox,
 } from "react-icons/fa";
 import { MdPhoneIphone } from "react-icons/md";
 import { SiNintendo } from "react-icons/si";
-import { BsGlobe } from "react-icons/bs";
-import { HStack, Icon } from "@chakra-ui/react";
-import { Platforms } from "../entities/Platforms";
-import { IconType } from "react-icons";
+import Platforms from "../entities/Platforms";
 
 interface Props {
   platforms: Platforms[];
@@ -30,12 +30,16 @@ function GameIconsList({ platforms }: Props) {
     web: BsGlobe,
   };
 
-  
   return (
     <>
       <HStack>
         {platforms.map((platform) => (
-          <Icon key={platform.id} as={iconMap[platform.slug]} color={"gray.500"} marginY={"10px"} />
+          <Icon
+            key={platform.id}
+            as={iconMap[platform.slug]}
+            color={"gray.500"}
+            marginY={"10px"}
+          />
         ))}
       </HStack>
     </>
